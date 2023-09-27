@@ -42,7 +42,6 @@ verificarEdad();
 function obtenerContinente(pais) {
     var continente;
 
-    // Convertir a minúsculas
     pais = pais.toLowerCase();
 
     switch (pais) {
