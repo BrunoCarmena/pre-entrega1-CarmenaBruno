@@ -42,26 +42,29 @@ verificarEdad();
 function obtenerContinente(pais) {
     var continente;
 
+    // Convertir a minúsculas
+    pais = pais.toLowerCase();
+
     switch (pais) {
-        case "España":
-        case "Francia":
-        case "Alemania":
-        case "Italia":
-        case "Inglaterra":
+        case "españa":
+        case "francia":
+        case "alemania":
+        case "italia":
+        case "inglaterra":
             continente = "Europa";
             break;
-        case "Estados Unidos":
-        case "Canadá":
-        case "México":
-        case "Brasil":
-        case "Argentina":
+        case "estados unidos":
+        case "canadá":
+        case "méxico":
+        case "brasil":
+        case "argentina":
             continente = "América";
             break;
-        case "China":
-        case "Japón":
-        case "Corea del Sur":
-        case "Corea del Norte":
-        case "India":
+        case "china":
+        case "japón":
+        case "corea del sur":
+        case "corea del norte":
+        case "india":
             continente = "Asia";
             break;
         default:
@@ -79,3 +82,4 @@ if (continente !== "No identificado") {
 } else {
     alert("No pudimos identificar el continente para el país ingresado.");
 }
+
