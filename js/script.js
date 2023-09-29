@@ -1,50 +1,46 @@
-function seleccionarVino() {
-    var tipoVino = prompt("¿Qué tipo de vino prefieres? (tinto, blanco, rosado)").toLowerCase();
+let saldo = 100000;
+let propiedad = null;
 
-    switch (tipoVino) {
-        case "tinto":
-            return 20;
-        case "blanco":
-            return 18;
-        case "rosado":
-            return 15;
+while (true) {
+    let opcion = prompt(`Tu saldo actual es $${saldo}. ¿Qué deseas hacer? (comprar, vender, alquilar, salir)`);
+
+    switch (opcion) {
+        case 'comprar':
+            if (saldo >= 50000) {
+                propiedad = 'comprada';
+                saldo -= 50000;
+                alert('Has comprado la propiedad. Tu saldo actual es: $' + saldo);
+            } else {
+                alert('No tienes suficiente dinero para comprar la propiedad.');
+            }
+            break;
+
+        case 'vender':
+            if (propiedad === 'comprada') {
+                propiedad = null;
+                saldo += 60000;
+                alert('Has vendido la propiedad. Tu saldo actual es: $' + saldo);
+            } else {
+                alert('No tienes una propiedad para vender.');
+            }
+            break;
+
+        case 'alquilar':
+            if (propiedad === 'comprada') {
+                saldo += 3000;
+                alert('Has alquilado la propiedad. Tu saldo actual es: $' + saldo);
+            } else {
+                alert('No tienes una propiedad para alquilar.');
+            }
+            break;
+
+        case 'salir':
+            alert('Gracias por usar nuestro servicio. Tu saldo final es: $' + saldo);
+            return;
+
         default:
-            return 0;
+            alert('Opción no válida. Por favor, elige una opción válida.');
     }
 }
-
-function calcularDescuento(total) {
-    var descuento = 0;
-
-    if (total > 50) {
-        descuento = total * 0.1; // 10% de descuento si el total es mayor a 50
-    }
-
-    return descuento;
-}
-
-function realizarCompra() {
-    var total = 0;
-    var continuar = true;
-
-    while (continuar) {
-        var precio = seleccionarVino();
-
-        if (precio === 0) {
-            alert("Tipo de vino no válido. Por favor, elige un tipo de vino válido.");
-        } else {
-            total += precio;
-
-            continuar = confirm("¿Deseas agregar más vinos a tu compra?");
-        }
-    }
-
-    var descuento = calcularDescuento(total);
-    var totalConDescuento = total - descuento;
-
-    alert("Total sin descuento: $" + total.toFixed(2) + "\nDescuento: $" + descuento.toFixed(2) + "\nTotal con descuento: $" + totalConDescuento.toFixed(2));
-}
-
-realizarCompra();
 
 
